@@ -1,4 +1,9 @@
-.active{
-    border: 1px solid green;
-    padding: 5px;
+.menu a {
+    padding: 10px;
+}
+
+.active {
+    border: 2px solid greenyellow;
+    color: green;
+    font-weight: 600;
 }
