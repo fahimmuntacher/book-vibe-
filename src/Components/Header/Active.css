@@ -1,10 +1,28 @@
 .menu a {
-    padding: 10px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: #444;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: #f0fdf4;
+  color: #16a34a;
 }
 
 .active {
-    border: 2px solid greenyellow;
-    border-radius: 10px;
-    color: green;
-    font-weight: 600;
+  border: 2px solid #22c55e; 
+  border-radius: 12px;
+  color: #15803d;
+  font-weight: 600;
+  background: linear-gradient(135deg, #dcfce7, #f0fdf4);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+  transition: all 0.3s ease;
+}
+
+.active:hover {
+  box-shadow: 0 0 14px rgba(34, 197, 94, 0.45);
+  transform: translateY(-1px);
 }

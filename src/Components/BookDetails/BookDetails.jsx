@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLoaderData, useParams } from 'react-router';
-import { setStoreBook } from '../../assets/Utility/Utility';
+import { getStoreBook, setStoreBook } from '../../Utility/Utility';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 const BookDetails = () => {
     const {id} = useParams();
@@ -8,12 +12,26 @@ const BookDetails = () => {
     const data = useLoaderData();
     const singleBook = data.find(book => book.bookId === idNum);
     const { bookId,bookName,image, author, review, category, totalPages, rating, tags, publisher, yearOfPublishing} = singleBook;
+    
     const [readed, setReaded] = useState(false)
+     
+    useEffect(() => {
+        const stored = getStoreBook();
+        if(stored.includes(bookId)){
+            setReaded(true)
+        }
+    }, [bookId])
     
     const handleAsMark = (id) => {
         setStoreBook(id)
         setReaded(true)
-        console.log(readed);
+
+        MySwal.fire({
+        title: "Good job!",
+        text: "Mark As Read!",
+        icon: "success"
+});
+        
     }
     // console.log(id);
     return (

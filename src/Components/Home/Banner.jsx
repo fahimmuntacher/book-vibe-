@@ -1,11 +1,12 @@
-import HeroBook from "../../assets/pngwing 1.png"
+
+import HeroImg from "../../assets/books.jpg"
 const Banner = () => {
     return (
         <div className='max-w-[1440px] my-5 mx-auto bg-gray-200 rounded-2xl mb-10'>
         <div className=" sm:flex sm:justify-center py-10">
             <div className="flex sm:flex-row flex-col items-center text-center sm:space-x-35">
             <img
-            src={HeroBook}
+            src={HeroImg}
             className="max-w-sm rounded-lg "
             />
             <div>
