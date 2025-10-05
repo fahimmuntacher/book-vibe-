@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
     return (
-     <div className="max-w-5xl mx-auto min-h-screen px-6 py-16 bg-gray-50 text-gray-800">
+     <div className="max-w-[1440px] mx-auto min-h-screen px-6 py-16 bg-gray-50 text-gray-800">
   {/* Hero Section */}
   <section className="text-center mb-16">
     <h1 className="text-4xl font-bold text-blue-700 mb-4">About Our Book Library</h1>

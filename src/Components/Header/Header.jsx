@@ -1,8 +1,8 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import "./Active.css"
 const Header = () => {
     return (
-        <div>
+        <div className="max-w-[1440px] mx-auto">
         <div className="navbar bg-base-100 shadow-sm">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -18,7 +18,10 @@ const Header = () => {
                         <NavLink to="/pages-to-read">Pages to Read</NavLink>
                     </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <Link to="home">
+                        <span className="text-2xl sm:text-3xl font-extrabold text-gray-900 hover:text-gray-700 transition-colors duration-300"> BookNest</span>
+                    </Link>
+                    
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 space-x-5 text-xl">
@@ -28,9 +31,13 @@ const Header = () => {
                     <NavLink to="/pages-to-read">Pages to Read</NavLink>
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
-                </div>
+                
+                    <div className="navbar-end">
+                        <a
+                            className="px-6 py-3 bg-green-600 text-white font-bold rounded-xl shadow-lg hover:bg-green-700 hover:shadow-xl transition-all duration-300 cursor-pointer">
+                            Sign Up
+                        </a>
+                        </div>
                 </div>
         </div>
     );
