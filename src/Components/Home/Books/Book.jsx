@@ -1,11 +1,13 @@
 import React from 'react';
 import { FaRegStarHalfStroke } from "react-icons/fa6";
+import { Link } from 'react-router';
 const Book = ({book}) => {
     const { bookId ,bookName, author, image, rating, category, tags} = book;
     console.log(tags);
     return (
-        <div>
-             <div key={bookId} className=" bg-base-100 shadow-lg rounded-2xl flex flex-col justify-between h-full border-2 border-gray-300">
+        <Link to={`/bookDetails/${bookId}`}>
+            <div>
+             <div key={bookId} className=" bg-base-100 shadow-lg rounded-2xl flex flex-col border-2 border-gray-300">
                
                 <div className='p-5'>
                     <figure className='p-10 h-fit bg-gray-200 rounded-2xl'>
@@ -32,7 +34,10 @@ const Book = ({book}) => {
                     </div>
                 </div>
                 </div>
-                </div>)
+        </div>
+        </Link>
+    )
+
             }
     
 

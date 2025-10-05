@@ -1,9 +1,12 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import Book from './Book';
 import { RiseLoader } from 'react-spinners';
+import { useLoaderData } from 'react-router';
 
 const Books = () => {
+    // const bookData = useLoaderData()
     const [allBooks, setAllBooks] = useState([]); 
+    // setAllBooks(bookData)
     useEffect(() => {
         fetch("/booksData.json").then(res => res.json())
         .then(data => {setAllBooks(data)})
