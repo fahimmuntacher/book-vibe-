@@ -32,11 +32,15 @@ const Header = () => {
                     </ul>
                 </div>
                 
-                    <div className="navbar-end">
-                        <a
+                    <div className="navbar-end flex space-x-2.5 ">
+                        <button
+                            className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all duration-300 cursor-pointer">
+                            Sign In
+                        </button>
+                        <button
                             className="px-6 py-3 bg-green-600 text-white font-bold rounded-xl shadow-lg hover:bg-green-700 hover:shadow-xl transition-all duration-300 cursor-pointer">
                             Sign Up
-                        </a>
+                        </button>
                         </div>
                 </div>
         </div>
