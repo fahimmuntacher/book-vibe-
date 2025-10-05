@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLoaderData, useParams } from 'react-router';
+import { setStoreBook } from '../../assets/Utility/Utility';
 
 const BookDetails = () => {
     const {id} = useParams();
     const idNum = parseInt(id)
     const data = useLoaderData();
     const singleBook = data.find(book => book.bookId === idNum);
-    const { bookName,image, author, review, category, totalPages, rating, tags, publisher, yearOfPublishing} = singleBook;
+    const { bookId,bookName,image, author, review, category, totalPages, rating, tags, publisher, yearOfPublishing} = singleBook;
+    const [readed, setReaded] = useState(false)
     
+    const handleAsMark = (id) => {
+        setStoreBook(id)
+        setReaded(true)
+        console.log(readed);
+    }
     // console.log(id);
     return (
         <div className='sm:max-w-[1440px] mx-auto my-10'>
@@ -51,7 +58,7 @@ const BookDetails = () => {
                     </div>
                     <div className='flex gap-5 justify-center sm:justify-start'>
                         <Link>
-                        <button className="btn px-7 py-5 text-xl font-bold border-2 rounded-xl border-gray-400">Read</button>
+                        <button onClick={() => handleAsMark(bookId)} disabled = {readed} className={` ${readed ? "bg-gray-600 text-gray-500 cursor-not-allowed" : "hover:bg-blue-500 hover:text-white"} btn px-7 py-5 text-xl font-bold border-2 rounded-xl border-gray-400`}>{readed ? "Marked" : "Mark As Read"}</button>
                         </Link>
                         <Link><button className="btn  px-7 py-5 border-2 text-xl text-white font-bold rounded-xl border-[#50B1C9] bg-[#50B1C9]">Wishlist</button></Link>
                     </div>
