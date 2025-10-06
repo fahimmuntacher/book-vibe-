@@ -1,5 +1,5 @@
-const getStoreBook = () => {
-    const storedBookSTR = localStorage.getItem("readList");
+const getStoreBook = (key) => {
+    const storedBookSTR = localStorage.getItem(key);
     if(storedBookSTR) {
         const storedBookData = JSON.parse(storedBookSTR);
         return storedBookData;
@@ -9,23 +9,24 @@ const getStoreBook = () => {
     }
 }
 
-const setStoreBook = (id) => {
-    const storedBookData = getStoreBook(); 
+const setStoreBook = (key, id) => {
+    const storedBookData = getStoreBook(key); 
     if(storedBookData.includes(id)) {
         alert("add hoye gese age")
     }
     else{
         storedBookData.push(id)
         const data = JSON.stringify(storedBookData)
-        localStorage.setItem("readList", data)
+        localStorage.setItem(key, data)
     }
 }
 
-const deleteId = id => {
-    const storedBookData = getStoreBook();
+const deleteId = (key ,id) => {
+    const storedBookData = getStoreBook(key);
     const updateList = storedBookData.filter(bookId => bookId !== id);
     console.log(updateList);  
     const convertStr = JSON.stringify(updateList);
-    localStorage.setItem("readList",convertStr)
+    localStorage.setItem(key ,convertStr)
 }
-export {setStoreBook, getStoreBook, deleteId }
+
+export {setStoreBook, getStoreBook, deleteId}

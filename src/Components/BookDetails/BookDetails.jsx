@@ -13,25 +13,37 @@ const BookDetails = () => {
     const singleBook = data.find(book => book.bookId === idNum);
     const { bookId,bookName,image, author, review, category, totalPages, rating, tags, publisher, yearOfPublishing} = singleBook;
     
-    const [readed, setReaded] = useState(false)
+    const [readed, setReaded] = useState(false);
+    const [listed, setListed] = useState(false);
      
     useEffect(() => {
-        const stored = getStoreBook();
+        const stored = getStoreBook("readList");
         if(stored.includes(bookId)){
             setReaded(true)
         }
     }, [bookId])
     
     const handleAsMark = (id) => {
-        setStoreBook(id)
+        setStoreBook("readList",id)
         setReaded(true)
 
         MySwal.fire({
         title: "Good job!",
         text: "Mark As Read!",
         icon: "success"
-});
-        
+    });
+    }
+
+    useEffect(() => {
+        const stored = getStoreBook("wishList");
+        if(stored.includes(bookId)){
+            setListed(true)
+        }
+    }, [bookId])
+
+    const handWishList = (id) => {
+        setStoreBook("wishList",id);
+        setListed(true)
     }
     // console.log(id);
     return (
@@ -78,9 +90,34 @@ const BookDetails = () => {
                         <Link>
                         <button onClick={() => handleAsMark(bookId)} disabled = {readed} className={` ${readed ? "bg-gray-600 text-gray-500 cursor-not-allowed" : "hover:bg-blue-500 hover:text-white"} btn px-7 py-5 text-xl font-bold border-2 rounded-xl border-gray-400`}>{readed ? "Marked" : "Mark As Read"}</button>
                         </Link>
-                        <Link><button className="btn  px-7 py-5 border-2 text-xl text-white font-bold rounded-xl border-[#50B1C9] bg-[#50B1C9]">Wishlist</button></Link>
+                      {
+                        listed ? (
+                            <button
+                            disabled
+                            className="btn px-7 py-5 border-2 text-xl font-bold rounded-xl border-red-300 bg-red-100 text-red-500 cursor-not-allowed transition-all duration-200"
+                            >
+                            Added to Wishlist ❤️
+                            </button>
+                        ) : (
+                            <Link>
+                            <button
+                                onClick={() => handWishList(bookId)}
+                                className="btn px-7 py-5 border-2 text-xl font-bold rounded-xl border-[#50B1C9] bg-[#50B1C9] text-white hover:bg-[#3b99b0] transition-all duration-200"
+                            >
+                                Add to Wishlist
+                            </button>
+                            </Link>
+                        )
+                        }
                     </div>
                    
+
+                            {/* 
+                            "btn  px-7 py-5 border-2 text-xl text-white font-bold rounded-xl border-[#50B1C9] bg-[#50B1C9]"
+                            
+                            
+                            */}
+
                 </section>
             </div> 
         </div>

@@ -3,7 +3,6 @@ import { FaRegStarHalfStroke } from "react-icons/fa6";
 import { Link } from 'react-router';
 const Book = ({book}) => {
     const { bookId ,bookName, author, image, rating, category, tags} = book;
-    console.log(tags);
     return (
         <Link to={`/bookDetails/${bookId}`}>
             <div>

@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router";
 import "./Active.css"
 const Header = () => {
     return (
-        <div className="max-w-[1440px] mx-auto">
+        <div className="w-[1440px] mx-auto">
         <div className="navbar bg-base-100 shadow-sm">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -34,7 +34,7 @@ const Header = () => {
                 
                     <div className="navbar-end flex space-x-2.5 ">
                         <button
-                            className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all duration-300 cursor-pointer">
+                            className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all duration-300 cursor-pointer sm:block hidden">
                             Sign In
                         </button>
                         <button
