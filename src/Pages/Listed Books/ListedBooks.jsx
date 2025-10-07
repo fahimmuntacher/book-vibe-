@@ -1,24 +1,18 @@
-import { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router';
+import {  useContext, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { getStoreBook } from '../../Utility/Utility';
 import WishListUI from './wishListUI';
 import BookReaded from './BookReaded';
+import { WishListDataContext } from '../RootLayouts';
+
 
 const ListedBooks = () => {
-    const data = useLoaderData();
+    const {wishList, setWishList} = useContext(WishListDataContext)
+    console.log("listed page:", wishList);
     const [readList, setReadList] = useState([]);
     const [sort, setSort] = useState("");
-    const [wishList, setWishList] = useState([]);
-    const [activeTab, setActivetab] = useState('');
 
-    useEffect(() => {
-        const storedBook = getStoreBook("wishList")
-        const idNum = storedBook.map(id => parseInt(id));
-        const myWishList = data.filter(book => idNum.includes(book.bookId));
-        setWishList(myWishList);
-    },[data]);
+    const [activeTab, setActivetab] = useState('');
 
     const handleSort = (type) => {
         setSort(type)
@@ -44,7 +38,7 @@ const ListedBooks = () => {
             return;
         }
     }}
-    
+
     return (
         <div className='max-w-[1440px] mx-auto  min-h-[calc(100vh-30vh)]'>
             <div className='p-20 bg-gray-300 my-5 rounded-2xl'>
@@ -86,7 +80,8 @@ const ListedBooks = () => {
             <Tabs>
                 {/* 🔹 Tabs Header */}
                 <TabList className="flex flex-wrap justify-center sm:justify-start gap-3 bg-gray-100 p-2 rounded-xl">
-                <Tab
+                
+                    <Tab
                     onClick={() => setActivetab("read")}
                     className="px-5 py-2 text-gray-600 font-medium rounded-lg cursor-pointer transition-all duration-100"
                     selectedClassName="bg-blue-600 text-white shadow-md scale-105"
@@ -94,21 +89,23 @@ const ListedBooks = () => {
                     Read Books : {readList.length}
                 </Tab>
 
-                <Tab
+                 <Tab
                     onClick={() => setActivetab("wishlist")}
                     className="px-5 py-2 text-gray-600 font-medium rounded-lg cursor-pointer transition-all duration-100"
                     selectedClassName="bg-blue-600 text-white shadow-md scale-105"
                 >
                     Wishlist Books : {wishList.length}
                 </Tab>
+             
                 </TabList>
 
                 {/* 🔹 Tab Panels */}
                 <TabPanel>
-                    <BookReaded readList = {readList} setReadList = {setReadList}></BookReaded>
+                    <BookReaded   readList = {readList} setReadList = {setReadList}></BookReaded>
                 </TabPanel>
 
-                <TabPanel>
+               
+                 <TabPanel>
                     <WishListUI wishList = {wishList} setWishList = {setWishList}></WishListUI>
                 </TabPanel>
             </Tabs>
@@ -117,4 +114,4 @@ const ListedBooks = () => {
     );
     };
 
-export default ListedBooks;<h1>This is from listed books</h1>
+export default ListedBooks;

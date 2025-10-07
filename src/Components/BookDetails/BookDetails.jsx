@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link, useLoaderData, useParams } from 'react-router';
+import { Link, useLoaderData, useNavigate, useParams } from 'react-router';
 import { getStoreBook, setStoreBook } from '../../Utility/Utility';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { IoIosArrowBack } from 'react-icons/io';
 
 const MySwal = withReactContent(Swal)
 
@@ -12,9 +13,9 @@ const BookDetails = () => {
     const data = useLoaderData();
     const singleBook = data.find(book => book.bookId === idNum);
     const { bookId,bookName,image, author, review, category, totalPages, rating, tags, publisher, yearOfPublishing} = singleBook;
-    
     const [readed, setReaded] = useState(false);
     const [listed, setListed] = useState(false);
+    const navigate = useNavigate()
      
     useEffect(() => {
         const stored = getStoreBook("readList");
@@ -109,7 +110,12 @@ const BookDetails = () => {
                             </Link>
                         )
                         }
+                         <button onClick={() => navigate(-1)} className="flex items-center gap-2 px-4 py-2 rounded-xl border border-green-400  bg-white/70 backdrop-blur-md text-green-700 font-semibold  hover:bg-green-100 hover:scale-105 transition-all duration-300 shadow-sm cursor-pointer">
+                            <IoIosArrowBack className="text-2xl" />
+                            <span>Back</span>
+                            </button>
                     </div>
+                   
                    
 
                             {/* 

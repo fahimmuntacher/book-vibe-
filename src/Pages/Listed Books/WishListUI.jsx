@@ -3,14 +3,14 @@ import { deleteId, getStoreBook } from '../../Utility/Utility';
 import { useLoaderData } from 'react-router';
 
 const WishListUI = ({wishList, setWishList}) => {
-    const data = useLoaderData()
-    console.log(wishList)
-     useEffect(() => {
-        const storedBook = getStoreBook("wishList")
-        const idNum = storedBook.map(id => parseInt(id));
-        const myWishList = data.filter(book => idNum.includes(book.bookId));
-        setWishList(myWishList);
-    },[data, setWishList])
+    
+    // const data = useLoaderData()
+    //  useEffect(() => {
+    //     const storedBook = getStoreBook("wishList")
+    //     const idNum = storedBook.map(id => parseInt(id));
+    //     const myWishList = data.filter(book => idNum.includes(book.bookId));
+    //     setWishList(myWishList);
+    // },[data, setWishList])
 
 
       const removeBookList = (id) => {

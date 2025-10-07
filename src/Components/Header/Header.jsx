@@ -2,8 +2,9 @@ import { Link, NavLink } from "react-router";
 import "./Active.css"
 const Header = () => {
     return (
-        <div className="w-[1440px] mx-auto">
-        <div className="navbar bg-base-100 shadow-sm">
+        
+        <div className="fixed top-0 left-0 right-0 bg-white z-50 shadow-sm shadow-blue-300">
+        <div className=" w-[1440px] mx-auto navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -34,7 +35,7 @@ const Header = () => {
                 
                     <div className="navbar-end flex space-x-2.5 ">
                         <button
-                            className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all duration-300 cursor-pointer sm:block hidden">
+                            className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all duration-300 cursor-pointer">
                             Sign In
                         </button>
                         <button
